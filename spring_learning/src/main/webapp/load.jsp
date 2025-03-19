@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>404방지 빈 페이지</title>
-</head>
-<body>
-
-</body>
-</html>
+<script>
+//Controller에서 Model로 전달된 값을 JSTL 변수 형태로 출력시키는 방식 
+${msg}
+</script>

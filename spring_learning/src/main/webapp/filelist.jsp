@@ -23,28 +23,28 @@ ArrayList<String> filenm = (ArrayList)request.getAttribute("filenm");
 		%>
 		<tr>
 			<td><%=filenm.get(w) %></td>
-			<td><input type="button" value="삭제" onclick="file_del('<%=filenm.get(w) %>')"></td>
+			<td><input type="button" value="삭제"
+				onclick="file_del('<%=filenm.get(w) %>')"></td>
 		</tr>
 		<%
 		w++;
 		}
 		%>
-		
-		
+
+
 	</table>
 
-<!-- 선택한 파일의 이름만 POST로 전송 -->	
-<form id="fm" method="post" action="/filedel.do">
-<input type="hidden" name="fnm" value=""> 
-</form>
+	<!-- 선택한 파일의 이름만 POST로 전송 -->
+	<form id="fm" method="post" action="./filedel.do">
+		<input type="hidden" name="fnm" value="">
+	</form>
 
 </body>
 <script>
-function file_del(fnm){
-	fm.fnm.value = fnm;
-	fm.submit();
-	
-}
+function file_del(fnm) {
+    fm.fnm.value = fnm;
+    fm.submit();
+ }
 
 </script>
 </html>

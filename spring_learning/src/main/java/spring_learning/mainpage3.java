@@ -7,9 +7,11 @@ import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 // I/O Controller
@@ -83,10 +85,30 @@ public class mainpage3 {
 		
 		return null;
 	}
+
+	// 파일 삭제 메소드	
+	/* 아래 메소드와 같음!
+	@PostMapping("/filedel.do")
+	public String filedel(String fnm) {
+		System.out.println(fnm);
+		return null;
+	}
+	*/
 	
-	
-	//filedel.do
-	
-	
-	
+	// @RequestParam : Front-end 전달된 값 request.getParameter()
+	@PostMapping("/filedel.do")
+	public String filedel(@RequestParam("fnm") String filenm, HttpServletRequest req, Model m) throws Exception {
+//		System.out.println(filenm);
+		
+		String url = req.getServletContext().getRealPath("/upload/");
+		File f = new File(url + filenm);
+		f.delete();	//파일 삭제 메소드
+		
+		//js 메세지를 작성 후 Model로 JSP로 전달을 하게 됨
+		String msg = "alert('정상적으로 삭제 되었습니다.');"
+				+ "location.href='./filelist.do';";
+		m.addAttribute("msg",msg);
+		
+		return "load";
+	}
 }
