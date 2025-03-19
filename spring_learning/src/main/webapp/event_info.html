@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2025년 SUMMER!! SUPER EVENT!!</title>
+<style>
+.memo{
+resize:none;
+}
+</style>
+</head>
+<body>
+
+<form id="f" method="post" action="./event_infook.do">
+<p>[이벤트 참여!!]</p>
+<!-- 각 태그의 name은 데이터베이스의 컬럼명 -->
+고객명 : <input type="text" name="ename"><br>
+<!-- placeholder : input 안 회색 설명 -->
+연락처 : <input type="text" name="etel" maxlength="11" placeholder="-는 미입력"><br>
+이메일 : <input type="text" name="email"><br>
+<!-- memoclass : textarea resize:none;으로 사이즈조절 막기 -->
+이벤트 참여 이유 : <textarea cols="50" rows="3" name="ememo" class="memo"></textarea><br>
+<input type="checkbox" name="info1" value="Y">개인 정보 활용<br>
+<input type="checkbox" name="info2" value="Y">제 3자의 정보제공<br>
+<input type="button" value="이벤트 참여" onclick="eventok()"><br>
+</form>
+
+</body>
+<script src="event_info.js?v=13"></script>
+</html>
