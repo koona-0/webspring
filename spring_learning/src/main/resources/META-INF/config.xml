@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 커맨드+링크클릭 다운해야하는데 다운이 안됨  -->
+
+<!-- DTO, VO를 연결해주는 역할 (Controller, Model에서 사용)-->
+<configuration>
+<typeAliases>
+<!-- alias : 별명 / type : 패키지와 클래스명 사용  -->
+<typeAlias alias="macbookdto" type="spring_learning.macbook_DTO"/>
+</typeAliases>
+</configuration>

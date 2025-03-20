@@ -28,5 +28,25 @@
 	<property name="username" value="project"/>
 	<property name="password" value="a123456"/>
 	</bean>
+	
+	
+	<!-- Mybatis 구조의 DB 활용 -->
+	<!-- id 내맘대로 만든거에용 -->
+	<bean id="sqlfact" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dbinfo"/>	<!-- 위에서 상속받음 -->
+	<property name="configLocation" value="classpath:/META-INF/config.xml"/>	<!-- DTO, VO를 연결해주는 역할 -->
+	<property name="mapperLocations" value="classpath:/META-INF/mapper.xml"/>	<!-- 여기에 쿼리문 다갖다때림 -->
+	</bean>
+	
+	<!-- 
+	Mybatis Template (interface가 되어버림)
+	-->
+	<bean id="template" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="sqlfact"/>
+	</bean>
+	
+	
+	
+	
 
 </beans>

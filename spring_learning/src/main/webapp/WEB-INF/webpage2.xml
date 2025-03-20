@@ -7,7 +7,7 @@
    xsi:schemaLocation="http://www.springframework.org/schema/beans 
    http://www.springframework.org/schema/beans/spring-beans.xsd 
       http://www.springframework.org/schema/context 
-      http://www.springframework.org/schema/mvc/spring-context.xsd 
+      http://www.springframework.org/schema/context/spring-context.xsd 
       http://www.springframework.org/schema/mvc 
       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
       
@@ -28,9 +28,21 @@
 	</beans:bean>
 	
 	<!-- Controller의 패키지 및 class명을 설정하여 작동시킴 -->
+	<!-- 이렇게 하는거는 컨트롤러만 활성화시킴 => 다른애들의 어노테이션이 작동x
 	<beans:bean class="spring_learning.mainpage"></beans:bean>
 	<beans:bean class="spring_learning.mainpage2"></beans:bean>
 	<beans:bean class="spring_learning.mainpage3"></beans:bean>
+	<beans:bean class="spring_learning.macbook"></beans:bean>
+	 -->
+	 
+	 <!-- 
+	 context : 전체 그룹을 관리하는 태그 
+	 base-package : Java Package를 말하며 해당 패키지에 있는 모든 @을 사용할 수 있도록 오 ! 픈 ! 
+	 		만약 다른 패키지도 넣고싶으면 따옴표 안에 ,를 이용해서 계속 붙이면 됨 ! 
+	 		보안문제 없이 가능 ! 	 
+	 -->
+	<context:component-scan base-package="spring_learning"/>
+	 
 	
 	<!-- 
 	Spring에서 I/O를 사용하기 위한 환경설정 

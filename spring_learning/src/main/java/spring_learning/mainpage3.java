@@ -111,4 +111,23 @@ public class mainpage3 {
 		
 		return "load";
 	}
+	
+	/*==========jstl6.jsp 로드============*/
+	//jstl로 로드 후 값 전달 
+	@GetMapping("/jstl/jstl6.do")
+	public String jstl6(Model m) {
+		//Model을 이용하여 jstl6.jsp로 값을 전달
+		//출력 top.jsp에서 ${}로 변수 출력함 
+		String level = "일반수강생";
+		String corp ="(주)구나영회사";
+		String tel = "02-940-9940";
+		
+		m.addAttribute("level",level);
+		m.addAttribute("corp",corp);
+		m.addAttribute("tel",tel);
+		return null;
+	}
+	
+	
+	
 }
