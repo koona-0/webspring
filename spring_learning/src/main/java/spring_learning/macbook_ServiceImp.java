@@ -2,6 +2,7 @@ package spring_learning;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /*
@@ -28,12 +29,22 @@ import org.springframework.stereotype.Service;
 	
 ----------
 
+혼자할때는 컨트롤러에서 바로 implements 사용해서 클래스 오버라이드 해버려도되는데
+협업할때는 그런식으로 하면 코드 누수가 생김
+그래서 지금한 방식처럼 인터페이스 따로따로 만드는게 좋음  
 
 */
 
 @Service
 public class macbook_ServiceImp implements macbook_Service {
-
+	/*
+	@Autowired
+	private macbook_mapper mm;
+	
+	public String selectnow() {
+		return mm.selectnow();
+	}
+	*/
 	@Override
 	public int macbook_insert(macbook_DTO dto) {
 		return 0;

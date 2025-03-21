@@ -26,13 +26,15 @@ ${} : 필드명, 테이블명, 파라미터
 좋은 예) 외따옴표가 필요없는 애는 달러 / 외따옴표가 필요한 애는 샵 
 select * from ${mrp} where mid=#{mid}; 
  -->
+
 <insert id="macbook_insert">
 insert into macbook_class (midx,class_part,class_cate,class_name,class_day,class_price,class_sales,class_info,class_teacher,class_object,class_use,today)
 values ('0',#{class_part},#{class_cate},#{class_name},#{class_day},#{class_price},#{class_sales},#{class_info},#{class_teacher},#{class_object},#{class_use},now())
 </insert>
 
-<select id="macbook_select">
-select * from macbook_class
+<!-- resultType : config.xml에서 셋팅된 alias를 이용하여 Model DTO에 이관 -->
+<select id="macbook_select" resultType="macbookdto">
+select * from macbook_class order by midx desc
 </select>
 
 <delete id="macbook_delete">

@@ -118,6 +118,12 @@
 			<scope>runtime</scope>	<!-- 실행시간동안 작동되게 함 -->
 		</dependency>
 
+		<dependency>	<!-- inject : Spring, Sprig-boot Datasbase 관련 id 의존성 주입 (@Inject 사용가능)-->
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
 
 	</dependencies>
 
