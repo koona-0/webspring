@@ -5,6 +5,9 @@
 <!-- DTO, VO를 연결해주는 역할 (Controller, Model에서 사용)-->
 <configuration>
 <typeAliases>
+
+<!-- 새로운 DTO가 있을 경우에만 사용하는 XML!!!!!!! -->
+
 <!-- alias : 별명 / type : 패키지와 클래스명 사용  -->
 <typeAlias alias="macbookdto" type="spring_learning.macbook_DTO"/>
 </typeAliases>

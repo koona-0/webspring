@@ -32,10 +32,36 @@ insert into macbook_class (midx,class_part,class_cate,class_name,class_day,class
 values ('0',#{class_part},#{class_cate},#{class_name},#{class_day},#{class_price},#{class_sales},#{class_info},#{class_teacher},#{class_object},#{class_use},now())
 </insert>
 
+<!-- 
+과정 하나의 데이터
+ 
+매개변수 여러개 못받음 
+=> 매개변수가 여러개일때는 배열 하나로 받기! 
+-->
+<!-- 
+매개변수 String으로 받아서 결과를 dto로 줌 
+resultType을 쓸 수 있는 태그는 select밖에 없음 !
+-->
+<select id="macbook_one" resultType="macbookdto" parameterType="String"> <!-- id로 받은 데이터 저장하는게 resultType -->
+select * from macbook_class where midx=#{midx}
+</select>
+
+<!-- 과정 전체의 리스트 데이터 -->
 <!-- resultType : config.xml에서 셋팅된 alias를 이용하여 Model DTO에 이관 -->
 <select id="macbook_select" resultType="macbookdto">
 select * from macbook_class order by midx desc
 </select>
+
+<!-- 과정 데이터 수정 -->
+<update id="macbook_update">
+update macbook_class set class_part=#{class_part}, class_cate=#{class_cate}, 
+class_name=#{class_name }, class_day=#{class_day }, class_price=#{ class_price}, 
+class_sales=#{class_sales }, class_info=#{class_info }, class_teacher=#{class_teacher },
+ class_object=#{class_object }, class_use=#{class_use }
+where midx=#{midx}
+</update>
+
+
 
 <delete id="macbook_delete">
 delete from macbook_class

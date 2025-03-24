@@ -1,3 +1,6 @@
+//.js 파일에서 Back-end 코드를 사용할 수 없음
+//var subject = "${onedata.class_part}"; 이렇게 쓰면 문자 그대로 출력됨 
+
 function save_class(){
 	if(frm.class_name.value==""){
 		alert("과정명을 입력하세요");
