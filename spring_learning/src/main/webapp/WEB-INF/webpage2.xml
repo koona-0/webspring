@@ -41,7 +41,7 @@
 	 		만약 다른 패키지도 넣고싶으면 따옴표 안에 ,를 이용해서 계속 붙이면 됨 ! 
 	 		보안문제 없이 가능 ! 	 
 	 -->
-	<context:component-scan base-package="spring_learning"/>
+	<context:component-scan base-package="spring_learning, etc_model"/>
 	 
 	
 	<!-- 

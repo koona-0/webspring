@@ -34,8 +34,21 @@
 	<!-- id 내맘대로 만든거에용 -->
 	<bean id="sqlfact" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dbinfo"/>	<!-- 위에서 상속받음 -->
-	<property name="configLocation" value="classpath:/META-INF/config.xml"/>	<!-- DTO, VO를 연결해주는 역할 -->
-	<property name="mapperLocations" value="classpath:/META-INF/mapper.xml"/>	<!-- 여기에 쿼리문 다갖다때림 -->
+	<property name="configLocation" value="classpath:/META-INF/config.xml"/>	
+	
+	<!-- 
+	1개의 mapper를 사용한 경우 
+	<property name="mapperLocations" value="classpath:/META-INF/mapper.xml"/>	
+	 -->
+	<!-- 여러개의 mapper를 사용한 경우 -->
+	<property name="mapperLocations">
+		<array>
+			<value>classpath:/META-INF/mapper.xml</value>
+			<value>classpath:/META-INF/member_mapper.xml</value>
+		</array>
+	</property>
+	 
+	 
 	</bean>
 	
 	<!-- 

@@ -1,0 +1,18 @@
+create table macbook_member(
+midx int unsigned auto_increment,
+mid varchar(100) not null,
+mname varchar(100) not null,
+memail varchar(100) not null,
+primary key(midx),
+unique (mid)
+);
+
+
+
+INSERT INTO macbook_member (mid, mname, memail) VALUES 
+('user01', 'Alice', 'alice@example.com'),
+('user02', 'Bob', 'bob@example.com'),
+('user03', 'Charlie', 'charlie@example.com'),
+('user04', 'Diana', 'diana@example.com'),
+('user05', 'Eve', 'eve@example.com');
+

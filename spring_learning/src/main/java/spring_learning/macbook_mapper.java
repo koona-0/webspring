@@ -26,5 +26,5 @@ public interface macbook_mapper {
 	macbook_DTO macbook_one(String midx);	//하나의 데이터만 가져옴 
 	List<macbook_DTO> macbook_select();	//전체 데이터 
 	public int macbook_update(macbook_DTO dto);	//과정 수정
-	public int macbook_delete(int midx);
+	public int macbook_delete(int midx);	//삭제 (숫자로 처리)
 }
