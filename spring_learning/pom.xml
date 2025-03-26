@@ -118,10 +118,40 @@
 			<scope>runtime</scope>	<!-- 실행시간동안 작동되게 함 -->
 		</dependency>
 
-		<dependency>	<!-- inject : Spring, Sprig-boot Datasbase 관련 id 의존성 주입 (@Inject 사용가능)-->
+		<dependency>	<!-- inject : Spring, Sprig-boot Datasbase 관련 id 의존성 주입 (@Inject 사용가능) -->
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
+		</dependency>
+
+		<dependency>	<!-- JSON IN JAVA (API, .JSON파일) -->
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20250107</version>
+		</dependency>
+
+		<dependency>	<!-- JSON SIMPLE (API, .JSON파일) -->
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>	<!-- 메일 API (JAR) -->
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<dependency>	<!-- 메일 API (Compat) -->
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<dependency>	<!-- activation 보안관련 -->
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 
 
