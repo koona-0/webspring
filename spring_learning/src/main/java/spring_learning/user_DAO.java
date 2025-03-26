@@ -10,6 +10,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 //mapper interface를 사용하지 않는 경우 => 따옴표안이 변함 
+//interface 안쓰는 경우 유지보수, 협업 힘듦 
+//웬만하면 인터페이스 사용하기
 @Repository("user_DAO")
 public class user_DAO {
 

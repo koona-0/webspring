@@ -15,17 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class macbook {
 	/*
-	 * //xml정보 끌고오는 애들 Autowired, Inject
-	 * 
-	 * @Autowired @Inject : 의존성 주입 XML=>Java, Java=>XML
-	 * 
-	 * @Autowired SqlSessionFactory sqlfact;
+	 //xml정보 끌고오는 애들 Autowired, Inject
+	 @Autowired @Inject : 의존성 주입 XML=>Java, Java=>XML
+	 @Autowired SqlSessionFactory sqlfact;
 	 */
 
 	/*
-	 * // ibatis로 연결
-	 * 
-	 * @Inject SqlSessionFactory sqlfact;
+	 // ibatis로 연결
+	 @Inject SqlSessionFactory sqlfact;
 	 */
 
 	// 컨트롤러의 리소스 네임과 DAO의 레포지토리 이름이 같으면 됨 !
@@ -120,7 +117,6 @@ public class macbook {
 		}
 		pw.close();
 
-		
 		return null;
 	}
 

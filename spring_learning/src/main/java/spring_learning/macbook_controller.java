@@ -83,14 +83,3 @@ public class macbook_controller {	//추상클래스는 속도가 매우 빠름! 
 		return null;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
