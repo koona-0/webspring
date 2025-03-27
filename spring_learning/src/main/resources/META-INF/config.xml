@@ -7,33 +7,33 @@
 
 	<!-- Mybatis 및 SQL 실행 환경 외에 코드 오류시 Log 기록 확인 -->
 	<settings>
-	
+
 		<!-- mybatis 실행시 cache를 활용하는 기능 종료 -->
-		<setting name="cacheEnabled" value="false" />	
-		
-		<!-- auto_increment에 대한 생성값을 가져옴 (오5520
-		라클에서는 false써야함 자동증가값 없음) -->
-		<setting name="useGeneratedKeys" value="true" />	
-		
+		<setting name="cacheEnabled" value="false" />
+
+		<!-- auto_increment에 대한 생성값을 가져옴 (오5520 라클에서는 false써야함 자동증가값 없음) -->
+		<setting name="useGeneratedKeys" value="true" />
+
 		<!-- properties를 기본설정 + REUSE() -->
 		<setting name="defaultExecutorType" value="REUSE" />
-		
-		
-		<!-- NULL : 값이 있을 에러가 발생되는 상황일 경우 확인 (대문자임!)-->
+
+		<!-- NULL : 값이 있을 에러가 발생되는 상황일 경우 확인 (대문자임!) -->
 		<setting name="jdbcTypeForNull" value="NULL" />
-		
+
 		<!-- log interface를 기본으로 모든 클래스에 자동 장착 -->
 		<setting name="logImpl"
 			value="org.apache.ibatis.logging.stdout.StdOutImpl" />
 	</settings>
-		
+
 
 	<typeAliases>
 		<!-- 새로운 DTO가 있을 경우에만 사용하는 XML!!!!!!! -->
 		<!-- alias : 별명 / type : 패키지와 클래스명 사용 -->
 		<typeAlias alias="macbookdto"
 			type="spring_learning.macbook_DTO" />
-			<typeAlias alias="memberdto"
+		<typeAlias alias="memberdto"
 			type="spring_learning.macbook_member_DTO" />
+		<typeAlias alias="banner_DTO"
+			type="spring_learning.banner_DTO" />
 	</typeAliases>
 </configuration>

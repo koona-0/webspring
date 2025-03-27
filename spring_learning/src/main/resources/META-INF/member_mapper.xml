@@ -7,10 +7,32 @@
 select * from macbook_member order by midx desc
 </select>
 
-<!-- 아아디 찾는 문법 (인자 두개만 받아올 때 Map 사용) -->
+<!-- 아이디 찾는 문법 (인자 두개만 받아올 때 Map 사용) -->
 <select id="search_userid" resultType="String" parameterType="Map">
 select mid from macbook_member where mname=#{mname} and memail=#{memail}
 </select>
 
+
+<!-- cms 테이블의 쿼리문 -->
+<insert id="cms_in" parameterType="Map">
+      insert into macbook_cms (cidx,csubject,cuser,cate,cdate)
+      values ('0',#{csubject},#{cuser},#{cate},now())
+</insert>
+
+<!-- cms 테이블의 쿼리문 - DTO가 없을 때 -->
+<select id="cms_views" resultType="Map">
+select * from macbook_cms where cidx='1'
+</select>
+
+<!-- 배너 파일 저장 테이블 -->
+<insert id="banner_in">
+insert into macbook_banner (bidx,bname,file_ori,file_new,file_url,bdate) 
+values ('0',#{bname},#{file_ori},#{file_new},#{file_url},now())
+</insert>
+
+<!-- 배너 전체 리스트 출력 쿼리문 -->
+<select id="banner_all" resultType="banner_DTO">
+select * from macbook_banner order by bidx desc
+</select>
 
 </mapper>

@@ -1,0 +1,26 @@
+create table macbook_cms(
+cidx int unsigned auto_increment,
+csubject varchar(100) not null,
+cuser char(50) not null,
+cate set ('cms1','cms2','cms3','cms4','cms5'), -- 체크박스에 다섯가지가 있는 경우
+cdate timestamp not null default current_timestamp,
+primary key(cidx)
+);
+
+insert into macbook_cms values ('0','테스트','홍길동','cms2,cms5',now());
+
+select * from macbook_cms;
+
+------------------------------------
+
+create table macbook_banner(
+bidx int unsigned auto_increment,
+bname varchar(100) not null,
+file_ori text null,
+file_new text null,
+file_url text null,
+bdate timestamp not null default current_timestamp,
+primary key(bidx)
+);
+
+select * from macbook_banner;
