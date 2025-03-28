@@ -30,9 +30,30 @@ insert into macbook_banner (bidx,bname,file_ori,file_new,file_url,bdate)
 values ('0',#{bname},#{file_ori},#{file_new},#{file_url},now())
 </insert>
 
-<!-- 배너 전체 리스트 출력 쿼리문 -->
-<select id="banner_all" resultType="banner_DTO">
-select * from macbook_banner order by bidx desc
+<!-- 배너 전체 리스트 출력 쿼리문 + 페이징 추가 -->
+<select id="banner_all" resultType="banner_DTO" parameterType="Map">
+select * from macbook_banner order by bidx desc limit #{spage},#{epage}
+</select>
+
+<!-- 
+* 2중 select 못하면 새로 써야됨 
+배너의 전체 데이터 개수 쿼리문 
+-->
+<select id="banner_total" resultType="int">
+select count(*) as total from macbook_banner
+</select>
+
+<!-- 배너명 검색 쿼리문 -->
+<!-- 
+[mybatis에서 DB에 따른 like 사용법] 잘알아두기 !
+mysql & mariaDB : like concat('%',#{search},'%')
+orecle : like '%'||#{search}||'%'
+mssql : like '%'+#{search}+'%'
+
+* like 외에도 다르게 써야하는 명령어 있음 : 트리거 등등 ...
+-->
+<select id="banner_search" resultType="banner_DTO" parameterType="String">
+select * from macbook_banner where bname like concat('%',#{search},'%') order by bidx desc
 </select>
 
 </mapper>

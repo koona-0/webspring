@@ -72,9 +72,37 @@ public class banner_controller {
 		return null;
 	}
 	
+	//search 검색에 관련사항은 필수조건은 아니며, 또한 null일경우 공백처리 
 	@GetMapping("/banner/bannerlist")	//경로 잘 맞추기 
-	public String bannerlist(Model m) {
-		List<banner_DTO> all = this.dao.all_banner();
+	public String bannerlist(Model m, 
+			@RequestParam(name="search", defaultValue = "", required = false) String search,
+			@RequestParam(name="pageno", defaultValue = "1", required = false) Integer pageno) {
+		
+		//페이징
+		//페이징한다고 쿼리문 따로 만들지않고 전체출력을 꾸며서 쓰는것이 좋음 !!!!!
+		
+		//리스트 총개수확인 
+		int total = this.dao.banner_total();
+		System.out.println(total);
+		
+		//사용자가 클릭한 페이지 번호에 맞는 순차번호 계산값 
+		int userpage = (pageno - 1) * 5;
+		m.addAttribute("userpage",userpage);
+		
+		
+		//검색 
+		//search 의 값이 없을때 디폴트 "", 필수 X로 받겠다는 뜻 => 안쓰면 400! 
+		List<banner_DTO> all = null;
+		
+		if(search.equals("")) {		//연산기호 X, equals
+			System.out.println("검색어없음");
+			all = this.dao.all_banner(pageno);	//사용자가 클릭한 페이지 번호값 전달 
+		}else {
+			all = this.dao.banner_search(search);
+		}
+		
+		m.addAttribute("total",total);
+		m.addAttribute("search",search);
 		m.addAttribute("all",all);
 		
 		return null;
