@@ -26,7 +26,7 @@
 	<table border="1" cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
-				<th><input type="checkbox"></th>
+				<th><input type="checkbox" id="allck" onclick="check_all(this.checked)"></th>
 				<th width="80">번호</th>
 				<th width="300">배너명</th>
 				<th width="100">이미지</th>
@@ -49,9 +49,14 @@
 		
 		<tbody>
 		<cr:set var="ino" value="${total - userpage}"/>	<!-- 게시물 일련번호 셋팅 -->
+		
+		<!-- 반복문 안에는 절대 id로 같은 이름 사용 불가능 => class(ajax전송), name(form전송) 사용 -->
+		<!-- 고수는 data-value 이런 맘대로 쓴 속성으로 핸들링 -->
+		
 			<cr:forEach var="bn" items="${all}" varStatus="idx">
 				<tr height="50">
-					<td><input type="checkbox"></td>
+				<!-- 게시판번호 x DB에 저장된 auto_increment 값 -->
+					<td><input type="checkbox" name="ckbox" value="${bn.bidx}" onclick="checkdata()"></td>
 					<td align="center">
 					${ino - idx.index}
 					
@@ -71,6 +76,7 @@
 					<td align="center">${fn:substring(bn.bdate,0,10)}</td>
 				</tr>
 			</cr:forEach>
+		
 			<!-- 
 			이미지 엑박뜨는 이유 : 경로 다름
 			
@@ -89,10 +95,15 @@
 	<br><br>
 	
 	<!-- form 전송으로 선택된 값을 삭제하는 프로세서 -->
-	<form id="dform">
-	<input type="hidden">
+	<!-- 
+	1. forEach => form => 동일한 name => post 전송 => 배열로 받음
+	2. form => 하나의 hidden을 이용 => post 전송 => 자료형 한개로 받음 
+	주의 : 반복문 속 form, 반복문 속 id => 절대 X
+	 -->
+	<form id="dform" method="post" action="./bannerdel">
+	<input type="hidden" name="ckdel" value="">
 	</form>
-	<input type="button" value="선택삭제">
+	<input type="button" value="선택삭제" onclick="check_del()">
 	<br><br>
 	
 	<!-- pageing -->
@@ -138,6 +149,59 @@ var spage = function(){
 
 function pg(no){
 	location.href='./bannerlist?pageno='+no;
+}
+
+//체크박스 전체선택 함수 
+//getElements : name // class getElement : id
+function check_all(ck){	//ck : true, false
+	var ea = document.getElementsByName("ckbox");
+	
+	var w= 0;
+	while(w < ea.length){
+		ea[w].checked = ck;
+		w++;
+	}
+	//위에거 길게쓰면 아래 코드 
+	/*
+	if(ck == true){	//전체선택한 경우 
+		var w= 0;
+		while(w < ea.length){
+			ea[w].checked = true;
+			w++;
+		}
+	}else{	//전체선택 해제한 경우 
+		var w= 0;
+		while(w < ea.length){
+			ea[w].checked = false;
+			w++;
+		}
+	}
+	*/
+}
+
+//하나라도 체크 해제시 전체선택 체크 해제 
+function checkdata(){
+	
+}
+
+//선택삭제 버튼 클릭시 리스트에서 체크된 값을 확인 후 배열화하여 hidden에 값을 적용하여 Back-end에 문자열로 전달 
+function check_del(){
+	var ar = new Array();	//script 배열 
+	
+	var ob = document.getElementsByName("ckbox");
+	var w = 0;
+	while(w < ob.length){
+		if(ob[w].checked == true){
+			ar.push(ob[w].value);	
+		}
+		w++;
+	}
+	dform.ckdel.value = ar;	//배열이 자동으로 문자열로 변해서 들어감 value="9,8,7,6,5"
+	
+	if(confirm('해당 데이터를 삭제시 복구되지 않습니다.')){
+		dform.submit();
+	}
+	
 }
 </script>
 </html>

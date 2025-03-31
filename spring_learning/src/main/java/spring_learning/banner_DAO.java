@@ -47,4 +47,10 @@ public class banner_DAO {
 	}
 	//똑같은거 많으면 그냥 필드에 올리는게 더 좋음 List<banner_DTO> 이런거 필드에 올리기 
 	
+	//배너 삭제 메소드 
+	public int banner_del(String no) {
+		int result = this.st.delete("macbook_user.banner_del", no);
+		return result;
+	}
+	
 }
